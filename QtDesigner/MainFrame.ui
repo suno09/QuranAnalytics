@@ -1,0 +1,628 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+    <class>MainWindow</class>
+    <widget class="QMainWindow" name="MainWindow">
+        <property name="geometry">
+            <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>1060</width>
+                <height>599</height>
+            </rect>
+        </property>
+        <property name="minimumSize">
+            <size>
+                <width>1060</width>
+                <height>599</height>
+            </size>
+        </property>
+        <property name="maximumSize">
+            <size>
+                <width>1060</width>
+                <height>599</height>
+            </size>
+        </property>
+        <property name="windowTitle">
+            <string>Implémentation d’un outil d’aide à l’analyse stylométrique du Coran</string>
+        </property>
+        <property name="styleSheet">
+            <string notr="true"/>
+        </property>
+        <widget class="QWidget" name="centralwidget">
+            <widget class="QTableWidget" name="tableWidget">
+                <property name="geometry">
+                    <rect>
+                        <x>240</x>
+                        <y>10</y>
+                        <width>811</width>
+                        <height>511</height>
+                    </rect>
+                </property>
+                <property name="styleSheet">
+                    <string notr="true">background-image: url(:/images/imgQuran.png);</string>
+                </property>
+                <property name="editTriggers">
+                    <set>QAbstractItemView::NoEditTriggers</set>
+                </property>
+                <attribute name="horizontalHeaderDefaultSectionSize">
+                    <number>100</number>
+                </attribute>
+                <attribute name="verticalHeaderDefaultSectionSize">
+                    <number>30</number>
+                </attribute>
+            </widget>
+            <widget class="QProgressBar" name="progressBar">
+                <property name="geometry">
+                    <rect>
+                        <x>10</x>
+                        <y>530</y>
+                        <width>1041</width>
+                        <height>23</height>
+                    </rect>
+                </property>
+                <property name="styleSheet">
+                    <string notr="true">QProgressBar {
+                        border: 2px solid black;
+                        }
+                    </string>
+                </property>
+                <property name="value">
+                    <number>0</number>
+                </property>
+                <property name="textVisible">
+                    <bool>false</bool>
+                </property>
+            </widget>
+            <widget class="QLabel" name="label">
+                <property name="geometry">
+                    <rect>
+                        <x>10</x>
+                        <y>560</y>
+                        <width>1041</width>
+                        <height>31</height>
+                    </rect>
+                </property>
+                <property name="font">
+                    <font>
+                        <family>Microsoft YaHei</family>
+                        <pointsize>11</pointsize>
+                    </font>
+                </property>
+                <property name="styleSheet">
+                    <string notr="true">QLabel {
+                        border: 2px solid black;
+                        border-radius: 9px;
+                        }
+                    </string>
+                </property>
+                <property name="text">
+                    <string/>
+                </property>
+            </widget>
+            <widget class="QGroupBox" name="gbIndexation">
+                <property name="geometry">
+                    <rect>
+                        <x>10</x>
+                        <y>10</y>
+                        <width>221</width>
+                        <height>93</height>
+                    </rect>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>11</pointsize>
+                    </font>
+                </property>
+                <property name="styleSheet">
+                    <string notr="true">QGroupBox {
+                        border: 2px solid black;
+                        border-radius: 9px;
+                        margin-top: 0.5em;
+                        }
+                        QGroupBox::title {
+                        subcontrol-origin: margin;
+                        left: 10px;
+                        padding: -2 3px 0 3px;
+                        }
+                    </string>
+                </property>
+                <property name="title">
+                    <string>Indexation</string>
+                </property>
+                <widget class="QPushButton" name="pbNewRecharge">
+                    <property name="geometry">
+                        <rect>
+                            <x>10</x>
+                            <y>55</y>
+                            <width>201</width>
+                            <height>31</height>
+                        </rect>
+                    </property>
+                    <property name="font">
+                        <font>
+                            <pointsize>11</pointsize>
+                        </font>
+                    </property>
+                    <property name="text">
+                        <string>Chergement Nouvel Index</string>
+                    </property>
+                </widget>
+                <widget class="QPushButton" name="pbOldRecharge">
+                    <property name="geometry">
+                        <rect>
+                            <x>10</x>
+                            <y>20</y>
+                            <width>201</width>
+                            <height>31</height>
+                        </rect>
+                    </property>
+                    <property name="font">
+                        <font>
+                            <pointsize>11</pointsize>
+                        </font>
+                    </property>
+                    <property name="text">
+                        <string>Chergement Ancien Index</string>
+                    </property>
+                </widget>
+            </widget>
+            <widget class="QGroupBox" name="gbOperation">
+                <property name="enabled">
+                    <bool>false</bool>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>10</x>
+                        <y>110</y>
+                        <width>221</width>
+                        <height>341</height>
+                    </rect>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>11</pointsize>
+                    </font>
+                </property>
+                <property name="styleSheet">
+                    <string notr="true">QGroupBox {
+                        border: 2px solid black;
+                        border-radius: 9px;
+                        margin-top: 0.5em;
+                        }
+                        QGroupBox::title {
+                        subcontrol-origin: margin;
+                        left: 10px;
+                        padding: -2 3px 0 3px;
+                        }
+                    </string>
+                </property>
+                <property name="title">
+                    <string>Opération</string>
+                </property>
+                <widget class="QComboBox" name="cbOperation">
+                    <property name="geometry">
+                        <rect>
+                            <x>10</x>
+                            <y>20</y>
+                            <width>201</width>
+                            <height>24</height>
+                        </rect>
+                    </property>
+                    <property name="font">
+                        <font>
+                            <pointsize>11</pointsize>
+                        </font>
+                    </property>
+                    <item>
+                        <property name="text">
+                            <string>Translitération</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>Concordanceur</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>Histogramme</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>Ahkaam Encoding</string>
+                        </property>
+                    </item>
+                </widget>
+                <widget class="QRadioButton" name="rbFromTexte">
+                    <property name="geometry">
+                        <rect>
+                            <x>10</x>
+                            <y>50</y>
+                            <width>121</width>
+                            <height>21</height>
+                        </rect>
+                    </property>
+                    <property name="font">
+                        <font>
+                            <pointsize>11</pointsize>
+                        </font>
+                    </property>
+                    <property name="text">
+                        <string>Texte</string>
+                    </property>
+                    <property name="checkable">
+                        <bool>true</bool>
+                    </property>
+                    <property name="checked">
+                        <bool>true</bool>
+                    </property>
+                </widget>
+                <widget class="QGroupBox" name="gbAPartirQuran">
+                    <property name="geometry">
+                        <rect>
+                            <x>10</x>
+                            <y>100</y>
+                            <width>201</width>
+                            <height>191</height>
+                        </rect>
+                    </property>
+                    <property name="font">
+                        <font>
+                            <family>Microsoft JhengHei</family>
+                            <pointsize>10</pointsize>
+                        </font>
+                    </property>
+                    <property name="autoFillBackground">
+                        <bool>false</bool>
+                    </property>
+                    <property name="styleSheet">
+                        <string notr="true">QGroupBox {
+                            border: 2px solid black;
+                            border-radius: 9px;
+                            margin-top: 0.5em;
+                            }
+                            QGroupBox::title {
+                            subcontrol-origin: margin;
+                            left: 10px;
+                            padding: -2 3px 0 3px;
+                            }
+                        </string>
+                    </property>
+                    <property name="title">
+                        <string>A partir Quran</string>
+                    </property>
+                    <property name="checkable">
+                        <bool>false</bool>
+                    </property>
+                    <property name="checked">
+                        <bool>false</bool>
+                    </property>
+                    <widget class="QGroupBox" name="gbSourat">
+                        <property name="geometry">
+                            <rect>
+                                <x>10</x>
+                                <y>20</y>
+                                <width>181</width>
+                                <height>51</height>
+                            </rect>
+                        </property>
+                        <property name="font">
+                            <font>
+                                <family>Microsoft JhengHei</family>
+                                <pointsize>10</pointsize>
+                            </font>
+                        </property>
+                        <property name="autoFillBackground">
+                            <bool>false</bool>
+                        </property>
+                        <property name="styleSheet">
+                            <string notr="true">QGroupBox {
+                                border: 2px solid gray;
+                                border-radius: 9px;
+                                margin-top: 0.5em;
+                                }
+                                QGroupBox::title {
+                                subcontrol-origin: margin;
+                                left: 10px;
+                                padding: -2 3px 0 3px;
+                                }
+                            </string>
+                        </property>
+                        <property name="title">
+                            <string>Sourat</string>
+                        </property>
+                        <property name="checkable">
+                            <bool>false</bool>
+                        </property>
+                        <property name="checked">
+                            <bool>false</bool>
+                        </property>
+                        <widget class="QComboBox" name="cbNomSourat">
+                            <property name="geometry">
+                                <rect>
+                                    <x>10</x>
+                                    <y>20</y>
+                                    <width>161</width>
+                                    <height>24</height>
+                                </rect>
+                            </property>
+                            <property name="font">
+                                <font>
+                                    <pointsize>11</pointsize>
+                                </font>
+                            </property>
+                        </widget>
+                    </widget>
+                    <widget class="QGroupBox" name="gbVersetMin">
+                        <property name="geometry">
+                            <rect>
+                                <x>10</x>
+                                <y>75</y>
+                                <width>181</width>
+                                <height>51</height>
+                            </rect>
+                        </property>
+                        <property name="font">
+                            <font>
+                                <family>Microsoft JhengHei</family>
+                                <pointsize>10</pointsize>
+                            </font>
+                        </property>
+                        <property name="autoFillBackground">
+                            <bool>false</bool>
+                        </property>
+                        <property name="styleSheet">
+                            <string notr="true">QGroupBox {
+                                border: 2px solid gray;
+                                border-radius: 9px;
+                                margin-top: 0.5em;
+                                }
+                                QGroupBox::title {
+                                subcontrol-origin: margin;
+                                left: 10px;
+                                padding: -2 3px 0 3px;
+                                }
+                            </string>
+                        </property>
+                        <property name="title">
+                            <string>Verset Minimum</string>
+                        </property>
+                        <property name="checkable">
+                            <bool>false</bool>
+                        </property>
+                        <property name="checked">
+                            <bool>false</bool>
+                        </property>
+                        <widget class="QComboBox" name="cbVersetMin">
+                            <property name="geometry">
+                                <rect>
+                                    <x>10</x>
+                                    <y>20</y>
+                                    <width>161</width>
+                                    <height>24</height>
+                                </rect>
+                            </property>
+                            <property name="font">
+                                <font>
+                                    <pointsize>11</pointsize>
+                                </font>
+                            </property>
+                        </widget>
+                    </widget>
+                    <widget class="QGroupBox" name="gbVersetMax">
+                        <property name="geometry">
+                            <rect>
+                                <x>10</x>
+                                <y>130</y>
+                                <width>181</width>
+                                <height>51</height>
+                            </rect>
+                        </property>
+                        <property name="font">
+                            <font>
+                                <family>Microsoft JhengHei</family>
+                                <pointsize>10</pointsize>
+                            </font>
+                        </property>
+                        <property name="autoFillBackground">
+                            <bool>false</bool>
+                        </property>
+                        <property name="styleSheet">
+                            <string notr="true">QGroupBox {
+                                border: 2px solid gray;
+                                border-radius: 9px;
+                                margin-top: 0.5em;
+                                }
+                                QGroupBox::title {
+                                subcontrol-origin: margin;
+                                left: 10px;
+                                padding: -2 3px 0 3px;
+                                }
+                            </string>
+                        </property>
+                        <property name="title">
+                            <string>Verset Maximum</string>
+                        </property>
+                        <property name="checkable">
+                            <bool>false</bool>
+                        </property>
+                        <property name="checked">
+                            <bool>false</bool>
+                        </property>
+                        <widget class="QComboBox" name="cbVersetMax">
+                            <property name="geometry">
+                                <rect>
+                                    <x>10</x>
+                                    <y>20</y>
+                                    <width>161</width>
+                                    <height>24</height>
+                                </rect>
+                            </property>
+                            <property name="font">
+                                <font>
+                                    <pointsize>11</pointsize>
+                                </font>
+                            </property>
+                        </widget>
+                    </widget>
+                </widget>
+                <widget class="QRadioButton" name="rbFromQuran">
+                    <property name="geometry">
+                        <rect>
+                            <x>10</x>
+                            <y>75</y>
+                            <width>111</width>
+                            <height>21</height>
+                        </rect>
+                    </property>
+                    <property name="font">
+                        <font>
+                            <pointsize>11</pointsize>
+                        </font>
+                    </property>
+                    <property name="text">
+                        <string>A partir Quran</string>
+                    </property>
+                </widget>
+                <widget class="QPushButton" name="pbRequete">
+                    <property name="enabled">
+                        <bool>false</bool>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>10</x>
+                            <y>300</y>
+                            <width>201</width>
+                            <height>31</height>
+                        </rect>
+                    </property>
+                    <property name="font">
+                        <font>
+                            <pointsize>11</pointsize>
+                        </font>
+                    </property>
+                    <property name="text">
+                        <string>Rechercher</string>
+                    </property>
+                </widget>
+                <widget class="QComboBox" name="cbTypeSearch">
+                    <property name="geometry">
+                        <rect>
+                            <x>80</x>
+                            <y>50</y>
+                            <width>131</width>
+                            <height>24</height>
+                        </rect>
+                    </property>
+                    <property name="font">
+                        <font>
+                            <pointsize>11</pointsize>
+                        </font>
+                    </property>
+                    <item>
+                        <property name="text">
+                            <string>Lemme</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>Root</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>Lemme et Root</string>
+                        </property>
+                    </item>
+                </widget>
+            </widget>
+            <widget class="QPushButton" name="pbSave">
+                <property name="enabled">
+                    <bool>false</bool>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>20</x>
+                        <y>457</y>
+                        <width>201</width>
+                        <height>31</height>
+                    </rect>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>11</pointsize>
+                    </font>
+                </property>
+                <property name="text">
+                    <string>Sauvegarder Résultat</string>
+                </property>
+            </widget>
+            <widget class="QPushButton" name="pbQuitter">
+                <property name="geometry">
+                    <rect>
+                        <x>20</x>
+                        <y>490</y>
+                        <width>201</width>
+                        <height>31</height>
+                    </rect>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>11</pointsize>
+                    </font>
+                </property>
+                <property name="text">
+                    <string>Quitter</string>
+                </property>
+            </widget>
+        </widget>
+        <action name="actionBooleen">
+            <property name="text">
+                <string>Booleen</string>
+            </property>
+        </action>
+        <action name="actionVectoriel">
+            <property name="text">
+                <string>Vectoriel</string>
+            </property>
+        </action>
+        <action name="actionIndex">
+            <property name="text">
+                <string>Index</string>
+            </property>
+            <property name="toolTip">
+                <string>Afficher index</string>
+            </property>
+        </action>
+        <action name="actionInverse">
+            <property name="text">
+                <string>Inverse</string>
+            </property>
+            <property name="toolTip">
+                <string>Afficher Inverse</string>
+            </property>
+        </action>
+    </widget>
+    <resources>
+        <include location="imgQuran.qrc"/>
+    </resources>
+    <connections>
+        <connection>
+            <sender>pbOldRecharge</sender>
+            <signal>clicked()</signal>
+            <receiver>gbOperation</receiver>
+            <slot>show()</slot>
+            <hints>
+                <hint type="sourcelabel">
+                    <x>90</x>
+                    <y>43</y>
+                </hint>
+                <hint type="destinationlabel">
+                    <x>70</x>
+                    <y>115</y>
+                </hint>
+            </hints>
+        </connection>
+    </connections>
+</ui>

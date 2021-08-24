@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+    <class>MainWindow</class>
+    <widget class="QMainWindow" name="MainWindow">
+        <property name="geometry">
+            <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>356</width>
+                <height>179</height>
+            </rect>
+        </property>
+        <property name="minimumSize">
+            <size>
+                <width>356</width>
+                <height>179</height>
+            </size>
+        </property>
+        <property name="maximumSize">
+            <size>
+                <width>356</width>
+                <height>179</height>
+            </size>
+        </property>
+        <property name="windowTitle">
+            <string>Cocordanceur</string>
+        </property>
+        <widget class="QWidget" name="centralwidget">
+            <widget class="QDialogButtonBox" name="buttonBox">
+                <property name="geometry">
+                    <rect>
+                        <x>40</x>
+                        <y>140</y>
+                        <width>211</width>
+                        <height>31</height>
+                    </rect>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>11</pointsize>
+                    </font>
+                </property>
+                <property name="standardButtons">
+                    <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+                </property>
+            </widget>
+            <widget class="QGroupBox" name="gbTypeSearch">
+                <property name="geometry">
+                    <rect>
+                        <x>10</x>
+                        <y>80</y>
+                        <width>161</width>
+                        <height>51</height>
+                    </rect>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>10</pointsize>
+                    </font>
+                </property>
+                <property name="styleSheet">
+                    <string notr="true">QGroupBox {
+                        border: 2px solid black;
+                        border-radius: 9px;
+                        margin-top: 0.5em;
+                        }
+                        QGroupBox::title {
+                        subcontrol-origin: margin;
+                        left: 10px;
+                        padding: -2 3px 0 3px;
+                        }
+                    </string>
+                </property>
+                <property name="title">
+                    <string>Type de Recherche</string>
+                </property>
+                <widget class="QComboBox" name="cbTypeSearch">
+                    <property name="geometry">
+                        <rect>
+                            <x>10</x>
+                            <y>20</y>
+                            <width>141</width>
+                            <height>22</height>
+                        </rect>
+                    </property>
+                    <item>
+                        <property name="text">
+                            <string>Lemme</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>Root</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>Lemme et Root</string>
+                        </property>
+                    </item>
+                </widget>
+            </widget>
+            <widget class="QGroupBox" name="gbNbrWords">
+                <property name="geometry">
+                    <rect>
+                        <x>180</x>
+                        <y>80</y>
+                        <width>161</width>
+                        <height>51</height>
+                    </rect>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>10</pointsize>
+                    </font>
+                </property>
+                <property name="styleSheet">
+                    <string notr="true">QGroupBox {
+                        border: 2px solid black;
+                        border-radius: 9px;
+                        margin-top: 0.5em;
+                        }
+                        QGroupBox::title {
+                        subcontrol-origin: margin;
+                        left: 10px;
+                        padding: -2 3px 0 3px;
+                        }
+                    </string>
+                </property>
+                <property name="title">
+                    <string>Nombre de mots</string>
+                </property>
+                <widget class="QComboBox" name="cbNbrWords">
+                    <property name="geometry">
+                        <rect>
+                            <x>10</x>
+                            <y>20</y>
+                            <width>141</width>
+                            <height>22</height>
+                        </rect>
+                    </property>
+                </widget>
+            </widget>
+            <widget class="QGroupBox" name="gbWordSearch">
+                <property name="geometry">
+                    <rect>
+                        <x>10</x>
+                        <y>10</y>
+                        <width>331</width>
+                        <height>61</height>
+                    </rect>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>10</pointsize>
+                    </font>
+                </property>
+                <property name="styleSheet">
+                    <string notr="true">QGroupBox {
+                        border: 2px solid black;
+                        border-radius: 9px;
+                        margin-top: 0.5em;
+                        }
+                        QGroupBox::title {
+                        subcontrol-origin: margin;
+                        left: 10px;
+                        padding: -2 3px 0 3px;
+                        }
+                    </string>
+                </property>
+                <property name="title">
+                    <string>Mot recherche</string>
+                </property>
+                <widget class="QTextEdit" name="textEdit">
+                    <property name="geometry">
+                        <rect>
+                            <x>10</x>
+                            <y>20</y>
+                            <width>311</width>
+                            <height>31</height>
+                        </rect>
+                    </property>
+                </widget>
+            </widget>
+        </widget>
+    </widget>
+    <resources/>
+    <connections/>
+</ui>
