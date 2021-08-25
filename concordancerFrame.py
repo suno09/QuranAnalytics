@@ -10,8 +10,8 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from showdialog import showdialog
-from transliteration import isLatin, isArabic, translit_to_latin, \
-    translit_to_arab, unicodeTextLatin
+from transliteration import is_latin, is_arabic, translit_to_latin, \
+    translit_to_arab, unicode_text_latin
 from concordancer import concordancer
 from time import time
 import re
@@ -36,10 +36,10 @@ class ConcordancerFrame(object):
                        'Enter a word to search')
             text_from = ''
             self.MainWindow.setEnabled(True)
-        elif isArabic(requete):
+        elif is_arabic(requete):
             text_translit = translit_to_latin(requete)
             url_text = text_translit
-        elif isLatin(requete):
+        elif is_latin(requete):
             text_translit = requete
             url_text = text_translit
         else:
@@ -85,7 +85,7 @@ class ConcordancerFrame(object):
                            r'<td.+?>.+?</td.*?>'
                 pattern2 = r'(<td.+?(</td>)){2}<td.+?>(.+?)</td.*?>' \
                            r'<td.+?>(.+?)</td.*?>'
-                unicode_text_translit = unicodeTextLatin(url_text)
+                unicode_text_translit = unicode_text_latin(url_text)
                 i = 1
                 nbr_doc_pertinent = 0
                 nbr_doc_pertinent_env = 0

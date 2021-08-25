@@ -14,7 +14,7 @@ from showdialog import showdialog
 import re
 from quran_index import load_data_index_ahkaam_encoding, \
     load_data_index_quran_buckwalter, load_sourats_names
-from transliteration import isArabic, isLatin, translit_to_arab, translit_to_latin
+from transliteration import is_arabic, is_latin, translit_to_arab, translit_to_latin
 from histogram import plot_histogram
 from searchEncoding import get_versets_by_encoding
 import os
@@ -325,11 +325,11 @@ class Ui_MainWindow(object):
                         self.progressBar.setRange(0, 100)
                         self.progressBar.setValue(0)
                         self.label.setText("")
-                    elif isArabic(requete):
+                    elif is_arabic(requete):
                         text_translit = translit_to_latin(requete)
                         text_from = 'Arabic'
                         text_to = 'Latin'
-                    elif isLatin(requete):
+                    elif is_latin(requete):
                         text_translit = translit_to_arab(requete)
                         text_from = 'Latin'
                         text_to = 'Arabic'
@@ -545,7 +545,7 @@ class Ui_MainWindow(object):
                 self.progressBar.setRange(0, 100)
                 self.progressBar.setValue(100)
                 self.label.setText(
-                    "Le résultat a été sauvegardé dans le répertoire " +
+                    "The result has been saved in the directory " +
                     folder_name)
             except:
                 showdialog(QtWidgets.QMessageBox.Critical, 'Error',
@@ -594,7 +594,7 @@ class Ui_MainWindow(object):
 
     def reload_old(self):
         self.progressBar.setRange(0, 0)
-        self.label.setText("Chargement des Indexs Quran et Ahkaam...")
+        self.label.setText("Loading Quran and Ahkaam Indexes...")
         startt = time()
         self.quran = load_data_index_quran_buckwalter()
         self.ahkaam = load_data_index_ahkaam_encoding()

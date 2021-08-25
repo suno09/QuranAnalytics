@@ -13,30 +13,33 @@ from time import time
 from showdialog import showdialog
 
 
-# extraire les versets associés à la séquence d'encodage
 def get_versets_by_encoding(encoding: str, quran: dict, ahkaam: dict,
                             frame_father=None):
-    debt = time()
-    # créer un default dictionnaire telle que sa valeur est default dictionnaire de chaine de caractéres
+    """
+    get the lists of versets in Quran that contains encoding ahkaam search
+    :param encoding: string of digits
+    :param quran: quran index of application
+    :param ahkaam: ahkaam index of Quran
+    :param frame_father: the main window
+    :return None
+    """
+    startt = time()
     list_versets_by_encoding = defaultdict(
         lambda: defaultdict(lambda: [list, str]))
     count_versets = 0
     count_results = 0
-    # pour chaque Sourate in Quran
     for num_sourat in ahkaam.keys():
         QtWidgets.QApplication.processEvents()
-        # pour chaque verset dans sourate
         for i in range(len(ahkaam[num_sourat])):
             QtWidgets.QApplication.processEvents()
-            # si l'Encoding est dans Encoding de verset
+            # if encoding exists in verset encoding
             if encoding in ahkaam[num_sourat][i]:
-                # combiner les mots de même verset
                 count_versets += 1
                 verset_context = ' '.join(
                     [quran[key][0] for key in sorted(quran.keys())
                      if key.startswith(
                         num_sourat + ':' + "{0:0>3}".format(i + 1))])
-                # ajouter verset dans resultat
+                # add verset in result
                 list_versets_by_encoding[num_sourat][
                     "{0:0>3}".format(i + 1)] = [
                     [m.start() for m in
@@ -46,12 +49,12 @@ def get_versets_by_encoding(encoding: str, quran: dict, ahkaam: dict,
                                          "{0:0>3}".format(i + 1)][0])
 
     if frame_father and list_versets_by_encoding:
-        frame_father.textSave2 = 'Search Encoding\nCodage recherché : %s\n' \
-                                 'Nombre verset trouvé : %d verset(s)\n' \
-                                 'Nombre codage trouvé : %d codage(s)\n\n' % (
+        frame_father.textSave2 = 'Search Encoding\nCoding searched : %s\n' \
+                                 'Verse number found : %d verset(s)\n' \
+                                 'Coding number found : %d encodings(s)\n\n' % (
                                      encoding, count_versets, count_results)
-        frame_father.textSave2 += '     Sourat    | Numéro Sourat | Verset | Contexte' \
-                                  '\n-------------------------------------------------\n'
+        frame_father.textSave2 += '     Sourat    | Sourat Number | Verset | Context' \
+                                  '\n------------------------------------------------\n'
         import matplotlib.pyplot as plt
         frame_father.listResult2 = list_versets_by_encoding
         frame_father.tableWidget.setStyleSheet("")
@@ -63,8 +66,8 @@ def get_versets_by_encoding(encoding: str, quran: dict, ahkaam: dict,
         frame_father.tableWidget.setColumnWidth(2, 60)
         frame_father.tableWidget.horizontalHeader().setStretchLastSection(True)
         frame_father.tableWidget.setHorizontalHeaderLabels(
-            ['Sourat', 'numéro\nSourat', 'Verset',
-             'Histogramme et Contexte\nCodage = ' + encoding])
+            ['Sourat', 'Sourat\nNumber', 'Verset',
+             'Histogram and Context\nEncoding = ' + encoding])
         ind = 0
         ind_first_sourat = int(sorted(ahkaam.keys())[0])
         for num_sourat in sorted(list_versets_by_encoding.keys()):
@@ -93,7 +96,7 @@ def get_versets_by_encoding(encoding: str, quran: dict, ahkaam: dict,
                         list_encoding_bars[j].set_color('b')
                         list_encoding_bars[j].set_edgecolor('black')
                 axe.set_xlabel('')
-                axe.set_ylabel('Encodage')
+                axe.set_ylabel('Encoding')
                 plt.xlim([0, len(list_encoding)])
                 plt.ylim([0, 6])
                 plt.gca().axes.get_xaxis().set_visible(False)
@@ -132,7 +135,7 @@ def get_versets_by_encoding(encoding: str, quran: dict, ahkaam: dict,
                 frame_father.text_save.append(fig)
                 frame_father.textSave2 += "%14s | %13s | %6s | %s\n%15s|%15s|%8s| %s\n" % (
                     translit_to_latin(frame_father.sourats_names[
-                                        int(num_sourat) - ind_first_sourat]),
+                                          int(num_sourat) - ind_first_sourat]),
                     num_sourat,
                     numVerset,
                     translit_to_arab(str_verset),
@@ -141,22 +144,22 @@ def get_versets_by_encoding(encoding: str, quran: dict, ahkaam: dict,
                 ind += 1
         item = QtWidgets.QTextEdit()
         item.setReadOnly(True)
-        item.setText('Search Encoding\nCodage recherché : %s\n'
-                     'Nombre verset trouvé : %d verset(s)\n'
-                     'Nombre codage trouvé : %d codage(s)' %
+        item.setText('Search Encoding\nCoding searched : %s\n'
+                     'Verse number found : %d verset(s)\n'
+                     'Coding number found : %d encodings(s)\n\n' %
                      (encoding, count_versets, count_results))
         frame_father.tableWidget.setCellWidget(ind * 4, 0, item)
         frame_father.tableWidget.setSpan(ind * 4, 0, 1, 4)
         frame_father.tableWidget.resizeColumnToContents(3)
         frame_father.tableWidget.resizeRowToContents(ind * 4)
         frame_father.label.setText(
-            'Operation completed in %.2f seconds' % (time() - debt))
+            'Operation completed in %.2f seconds' % (time() - startt))
         frame_father.progressBar.setRange(0, 100)
         frame_father.progressBar.setValue(100)
         frame_father.pbSave.setEnabled(True)
     else:
-        showdialog(QtWidgets.QMessageBox.Critical, 'Erreur',
-                   "Aucun résultat trouvé !")
+        showdialog(QtWidgets.QMessageBox.Critical, 'Error',
+                   "No result found !")
         frame_father.progressBar.setRange(0, 100)
         frame_father.progressBar.setValue(0)
         frame_father.label.setText("")

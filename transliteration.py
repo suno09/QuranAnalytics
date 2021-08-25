@@ -113,8 +113,12 @@ def normalize_text_arab(text_arab):
     return translit_to_arab(normalize_text_latin(translit_to_latin(text_arab)))
 
 
-# Detection automatique de si c'est de l'arabe ou du latin
-def isArabic(text: str):
+def is_arabic(text: str):
+    """
+    Detect text if arabic
+    :param text: text string
+    :return: boolean value
+    """
     for word in text.strip().split():
         for letter in word:
             if letter not in buckWalterLatin.keys():
@@ -122,7 +126,12 @@ def isArabic(text: str):
     return True
 
 
-def isLatin(text: str):
+def is_latin(text: str):
+    """
+    Detect text if latin
+    :param text: text string
+    :return: boolean value
+    """
     for word in text.strip().split():
         for letter in word:
             if letter not in buckWalterArabic.keys():
@@ -130,7 +139,12 @@ def isLatin(text: str):
     return True
 
 
-def unicodeTextLatin(textLatin):
-    text = normalize_text_latin(textLatin)
+def unicode_text_latin(text_latin):
+    """
+    Transform latin text to unicode text
+    :param text_latin:
+    :return: unicode text
+    """
+    text = normalize_text_latin(text_latin)
     return ''.join(['%' + buckWalterUnicode[letter] for letter in text if
                     letter in buckWalterUnicode.keys()])
