@@ -101,3 +101,4 @@ data/index_quran_buckwalter.txt
 __pycache__/
 results
 histogram_*
+search_encoding_*

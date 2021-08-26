@@ -14,10 +14,15 @@ from showdialog import showdialog
 import re
 from quran_index import load_data_index_ahkaam_encoding, \
     load_data_index_quran_buckwalter, load_sourats_names
-from transliteration import is_arabic, is_latin, translit_to_arab, translit_to_latin
+from transliteration import is_arabic, is_latin, translit_to_arab, \
+    translit_to_latin
 from histogram import plot_histogram
 from searchEncoding import get_versets_by_encoding
 import os
+import sys
+
+
+import imgQuran_rc
 
 
 class Ui_MainWindow(object):
@@ -439,7 +444,8 @@ class Ui_MainWindow(object):
                                                        item)
                         self.text_save += '%6s | %s\n%6s | %s\n' % \
                                           (
-                                              str(i), translit_to_arab(text), '',
+                                              str(i), translit_to_arab(text),
+                                              '',
                                               text)
                     self.label.setText(
                         'Operation completed in %.2f seconds' % (
@@ -600,8 +606,8 @@ class Ui_MainWindow(object):
         self.ahkaam = load_data_index_ahkaam_encoding()
         self.num_sourats = sorted(self.ahkaam.keys())
         self.sourats_names = load_sourats_names()[
-                            int(self.num_sourats[0]) - 1:int(
-                                self.num_sourats[-1])]
+                             int(self.num_sourats[0]) - 1:int(
+                                 self.num_sourats[-1])]
         self.cbNomSourat.clear()
         self.cbVersetMin.clear()
         self.cbVersetMax.clear()
@@ -668,11 +674,7 @@ class Ui_MainWindow(object):
             _translate("MainWindow", "Show reverse"))
 
 
-import imgQuran_rc
-
 if __name__ == "__main__":
-    import sys
-
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
